@@ -169,4 +169,6 @@
   <Target Name="AfterBuild">
   </Target>
   -->
+  <Target Name="COMReferencesWorkaround" BeforeTargets="ResolveAssemblyReferences" DependsOnTargets="ResolveProjectReferences">
+  </Target>
 </Project>
