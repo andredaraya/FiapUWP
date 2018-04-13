@@ -19,7 +19,6 @@ namespace FIAPMinhasReceitas.UWP
         public MainPage()
         {
             this.InitializeComponent();
-
             SystemNavigationManager.GetForCurrentView().BackRequested += On_BackRequested;
         }
 
