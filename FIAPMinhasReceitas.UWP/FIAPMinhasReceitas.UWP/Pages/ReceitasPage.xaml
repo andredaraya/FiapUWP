@@ -6,16 +6,22 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:models="using:FIAPMinhasReceitas.Models"
+    xmlns:cvt="using:FIAPMinhasReceitas.UWP.Converters"
     mc:Ignorable="d">
+
+    <Page.Resources>
+        <cvt:DecimalToStringPrecoConverter x:Key="DecimalToStringPreco" />
+    </Page.Resources>
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
         <StackPanel Margin="15">
-            <ListView Name="lstReceitas" ItemsSource="{x:Bind ViewModel.Receitas, Mode=OneWay}">
+            <ListView Name="lstReceitas" ItemsSource="{x:Bind ViewModel.Receitas, Mode=OneWay}" SelectionChanged="{x:Bind ViewModel.ListaReceitas_SelectionChanged}">
                 <ListView.HeaderTemplate>
                     <DataTemplate>
                         <Grid>
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="2*" />
+                                <ColumnDefinition Width="*" />
                                 <ColumnDefinition Width="*" />
                                 <ColumnDefinition Width="*" />
                             </Grid.ColumnDefinitions>
@@ -27,8 +33,12 @@
                                 <TextBlock Text="Categoria" Margin="5,0,0,0"/>
                             </Border>
                             <Border Grid.Column="2" BorderBrush="Black" BorderThickness="0,0,0,0.5">
+                                <TextBlock Text="Preço" Margin="5,0,0,0"/>
+                            </Border>
+                            <Border Grid.Column="3" BorderBrush="Black" BorderThickness="0,0,0,0.5">
                                 <TextBlock Text="Tempo de preparo" Margin="0,0,5,0" HorizontalAlignment="Right" />
                             </Border>
+
                         </Grid>
                     </DataTemplate>
                 </ListView.HeaderTemplate>
@@ -39,10 +49,12 @@
                                 <ColumnDefinition Width="2*"/>
                                 <ColumnDefinition Width="*"/>
                                 <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
                             </Grid.ColumnDefinitions>
                             <TextBlock Text="{x:Bind Titulo, Mode=OneWay}" />
                             <TextBlock Text="{x:Bind Categoria, Mode=OneWay}" Grid.Column="1" />
-                            <TextBlock Text="{x:Bind MinutosPreparo, Mode=OneWay}" Grid.Column="2" HorizontalAlignment="Right" />
+                            <TextBlock Text="{x:Bind Preco, Mode=OneWay, Converter={StaticResource DecimalToStringPreco}}" Grid.Column="2" />
+                            <TextBlock Text="{x:Bind MinutosPreparo, Mode=OneWay}" Grid.Column="3" HorizontalAlignment="Right" />
                         </Grid>
                     </DataTemplate>
                 </ListView.ItemTemplate>

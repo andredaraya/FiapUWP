@@ -1,5 +1,8 @@
-﻿using System.ComponentModel;
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
 using System.Runtime.CompilerServices;
+using System.Text;
 
 namespace FIAPMinhasReceitas.Models.Abstracts
 {
@@ -9,7 +12,11 @@ namespace FIAPMinhasReceitas.Models.Abstracts
 
         protected void OnPropertyChanged([CallerMemberName] string propertyName = null)
         {
-            this.PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+            var handler = this.PropertyChanged;
+            if (handler != null)
+            {
+                handler(this, new PropertyChangedEventArgs(propertyName));
+            }
         }
 
         public void Set<T>(ref T data, T value, [CallerMemberName]string propertyName = null)

@@ -95,11 +95,17 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Converters\DecimalToStringPrecoConverter.cs" />
+    <Compile Include="Converters\TypeToObjectConverter.cs" />
+    <Compile Include="Extensions\EnumExtensions.cs" />
     <Compile Include="MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\ConfiguracoesPage.xaml.cs">
       <DependentUpon>ConfiguracoesPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\EditarReceitaPage.xaml.cs">
+      <DependentUpon>EditarReceitaPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\ReceitasPage.xaml.cs">
       <DependentUpon>ReceitasPage.xaml</DependentUpon>
@@ -108,6 +114,11 @@
       <DependentUpon>TimerPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repository\Base\IRepository.cs" />
+    <Compile Include="Repository\MockReceitaRepository.cs" />
+    <Compile Include="Repository\Repository.cs" />
+    <Compile Include="Services\NavigationService.cs" />
+    <Compile Include="ViewModels\EditarReceitaViewModel.cs" />
     <Compile Include="ViewModels\ReceitasViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -139,6 +150,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Pages\EditarReceitaPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Pages\ReceitasPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -155,7 +170,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\FIAPMinhasReceitas.Models\FIAPMinhasReceitas.Models.csproj">
-      <Project>{9e8346bf-e994-4f18-abfa-8b6071a32382}</Project>
+      <Project>{d98fd2f5-0bde-446a-a97b-565440697f06}</Project>
       <Name>FIAPMinhasReceitas.Models</Name>
     </ProjectReference>
   </ItemGroup>
@@ -170,6 +185,4 @@
   <Target Name="AfterBuild">
   </Target>
   -->
-  <Target Name="COMReferencesWorkaround" BeforeTargets="ResolveAssemblyReferences" DependsOnTargets="ResolveProjectReferences">
-  </Target>
 </Project>

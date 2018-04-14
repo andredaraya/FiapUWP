@@ -1,4 +1,5 @@
 ﻿using FIAPMinhasReceitas.Models.Abstracts;
+using System;
 
 namespace FIAPMinhasReceitas.Models
 {
@@ -11,6 +12,13 @@ namespace FIAPMinhasReceitas.Models
 
     public class Receita : NotifyableClass
     {
+        private Guid _id;
+        public Guid Id
+        {
+            get { return _id; }
+            set { Set(ref _id, value); }
+        }
+
         private string _titulo;
         public string Titulo
         {

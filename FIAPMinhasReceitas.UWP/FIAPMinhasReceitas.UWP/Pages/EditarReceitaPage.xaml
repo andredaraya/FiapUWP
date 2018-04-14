@@ -1,0 +1,43 @@
+﻿<Page
+    x:Class="FIAPMinhasReceitas.UWP.Pages.EditarReceitaPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:FIAPMinhasReceitas.UWP.Pages"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:converters="using:FIAPMinhasReceitas.UWP.Converters"
+    xmlns:models="using:FIAPMinhasReceitas.Models"
+    mc:Ignorable="d">
+
+    <Page.Resources>
+        <converters:TypeToObjectConverter x:Key="TypeToObject"/>
+    </Page.Resources>
+
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <ScrollViewer Padding="12">
+            <StackPanel>
+                <TextBox Header="Título" Text="{x:Bind ViewModel.Receita.Titulo, Mode=TwoWay}" Margin="0,12"/>
+                <TextBox Header="Instruções" Text="{x:Bind ViewModel.Receita.Instrucoes, Mode=TwoWay}" AcceptsReturn="True" 
+                         ScrollViewer.VerticalScrollBarVisibility="Auto"
+                         Height="200" Margin="0,12" />
+                <TextBox Header="Minutos para o preparo" Text="{x:Bind ViewModel.Receita.MinutosPreparo, Mode=TwoWay, Converter={StaticResource TypeToObject}}" Margin="0,12"/>
+                <ComboBox Header="Categoria" ItemsSource="{x:Bind ViewModel.Categorias}" SelectedItem="{x:Bind ViewModel.Receita.Categoria, Mode=TwoWay}">
+                    <DataTemplate x:DataType="models:Categoria">
+                        <StackPanel>
+                            <TextBlock Text="{x:Bind }" />
+                        </StackPanel>
+                    </DataTemplate>
+                </ComboBox>
+                <TextBox Header="Preço" Text="{x:Bind ViewModel.Receita.Preco, Mode=TwoWay, Converter={StaticResource TypeToObject}}" Margin="0,12"/>
+            </StackPanel>
+        </ScrollViewer>
+        <CommandBar Grid.Row="1" Background="Transparent">
+            <AppBarButton Label="Compartilhar" Icon="Share" Click="{x:Bind ViewModel.CompartilharReceita}" />
+            <AppBarButton Label="Excluir" Icon="Delete" Click="{x:Bind ViewModel.ExcluirReceita}" />
+        </CommandBar>
+    </Grid>
+</Page>

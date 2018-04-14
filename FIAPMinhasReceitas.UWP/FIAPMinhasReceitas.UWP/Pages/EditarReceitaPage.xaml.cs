@@ -1,5 +1,4 @@
-﻿using FIAPMinhasReceitas.Models;
-using FIAPMinhasReceitas.UWP.ViewModels;
+﻿using FIAPMinhasReceitas.UWP.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -22,20 +21,29 @@ namespace FIAPMinhasReceitas.UWP.Pages
     /// <summary>
     /// An empty page that can be used on its own or navigated to within a Frame.
     /// </summary>
-    public sealed partial class ReceitasPage : Page
+    public sealed partial class EditarReceitaPage : Page
     {
-        public ReceitasViewModel ViewModel { get; } = new ReceitasViewModel();
+        public EditarReceitaViewModel ViewModel { get; } = new EditarReceitaViewModel();
 
-        public ReceitasPage()
+        public EditarReceitaPage()
         {
             this.InitializeComponent();
-            this.Loaded += ReceitasPage_Loaded;
         }
 
-        private async void ReceitasPage_Loaded(object sender, RoutedEventArgs e)
+        protected override void OnNavigatedTo(NavigationEventArgs e)
         {
-            await ViewModel.Initialize();
-        }
+            object parameter = e.Parameter;
 
+            if (parameter == null)
+            {
+                parameter = Guid.NewGuid();
+            }
+            else if (!(parameter is Guid))
+            {
+                throw new ArgumentException();
+            }
+
+            ViewModel.CarregarReceita((Guid)parameter);
+        }
     }
 }

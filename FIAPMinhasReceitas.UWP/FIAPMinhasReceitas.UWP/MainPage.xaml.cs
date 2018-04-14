@@ -1,10 +1,19 @@
 ﻿using FIAPMinhasReceitas.UWP.Pages;
+using FIAPMinhasReceitas.UWP.Services;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Runtime.InteropServices.WindowsRuntime;
+using Windows.Foundation;
+using Windows.Foundation.Collections;
 using Windows.UI.Core;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
+using Windows.UI.Xaml.Controls.Primitives;
+using Windows.UI.Xaml.Data;
+using Windows.UI.Xaml.Input;
+using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 
 // The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=402352&clcid=0x409
@@ -16,20 +25,23 @@ namespace FIAPMinhasReceitas.UWP
     /// </summary>
     public sealed partial class MainPage : Page
     {
+
         public MainPage()
         {
             this.InitializeComponent();
-            SystemNavigationManager.GetForCurrentView().BackRequested += On_BackRequested;
+
+            NavigationService.Frame = ContentFrame;
+            NavigationService.Navigated += On_Navigated;
         }
 
         private void NavView_ItemInvoked(NavigationView sender, NavigationViewItemInvokedEventArgs args)
         {
             NavView.Header = args.InvokedItem is NavigationViewItem ?
-                        ((NavigationViewItem)args.InvokedItem).Content : (string)args.InvokedItem;
+                ((NavigationViewItem)args.InvokedItem).Content : (string)args.InvokedItem;
 
             if (args.IsSettingsInvoked)
             {
-                ContentFrame.Navigate(typeof(ConfiguracoesPage));
+                NavigationService.Navigate<ConfiguracoesPage>();
             }
             else
             {
@@ -43,22 +55,21 @@ namespace FIAPMinhasReceitas.UWP
             switch (item.Tag)
             {
                 case "receitas":
-                    ContentFrame.Navigate(typeof(ReceitasPage));
+                    NavigationService.Navigate<ReceitasPage>();
                     break;
                 case "timer":
-                    ContentFrame.Navigate(typeof(TimerPage));
+                    NavigationService.Navigate<TimerPage>();
                     break;
             }
         }
 
-        private void On_BackRequested(object sender, BackRequestedEventArgs e)
+        private void NovaReceitaAppBarButton_Click(object sender, RoutedEventArgs e)
         {
-            if (!e.Handled && ContentFrame.CanGoBack)
-            {
-                ContentFrame.GoBack();
-                e.Handled = true;
-            }
+            NavView.Header = "Nova Receita";
+
+            NavigationService.Navigate<EditarReceitaPage>();
         }
+
 
         private void On_Navigated(object sender, NavigationEventArgs e)
         {
@@ -72,10 +83,11 @@ namespace FIAPMinhasReceitas.UWP
             else
             {
                 Dictionary<Type, string> lookup = new Dictionary<Type, string>()
-        {
-            {typeof(ReceitasPage), "receitas"},
-            {typeof(TimerPage), "timer"}
-        };
+                {
+                    {typeof(ReceitasPage), "receitas"},
+                    {typeof(TimerPage), "timer"},
+                    {typeof(EditarReceitaPage), ""},
+                };
 
                 String stringTag = lookup[ContentFrame.SourcePageType];
 
