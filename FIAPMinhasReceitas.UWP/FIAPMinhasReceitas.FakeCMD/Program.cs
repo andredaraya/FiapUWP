@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace FIAPMinhasReceitasFakeCMD
+namespace FIAPMinhasReceitas.FakeCMD
 {
     class Program
     {

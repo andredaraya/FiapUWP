@@ -12,7 +12,7 @@ using System;
 namespace FIAPMinhasReceitas.Dados.Migrations
 {
     [DbContext(typeof(ReceitaDbContext))]
-    [Migration("20180414163646_MigracaoInicial")]
+    [Migration("20180414163709_MigracaoInicial")]
     partial class MigracaoInicial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

@@ -1,7 +1,9 @@
 ﻿using FIAPMinhasReceitas.Dados;
 using FIAPMinhasReceitas.Models;
 using System;
+using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 using System.Threading.Tasks;
 
 namespace FIAPMinhasReceitas.UWP.Repository

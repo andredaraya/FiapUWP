@@ -1,5 +1,6 @@
 ﻿using FIAPMinhasReceitas.Models;
 using Microsoft.EntityFrameworkCore;
+using System;
 
 namespace FIAPMinhasReceitas.Dados
 {

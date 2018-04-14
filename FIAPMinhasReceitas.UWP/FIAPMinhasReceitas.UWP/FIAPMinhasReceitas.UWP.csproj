@@ -116,6 +116,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repository\Base\IRepository.cs" />
     <Compile Include="Repository\EFReceitaRepository.cs" />
+    <Compile Include="Repository\MockReceitaRepository.cs" />
     <Compile Include="Repository\Repository.cs" />
     <Compile Include="Services\NavigationService.cs" />
     <Compile Include="ViewModels\EditarReceitaViewModel.cs" />
@@ -173,7 +174,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\FIAPMinhasReceitas.Dados\FIAPMinhasReceitas.Dados.csproj">
-      <Project>{21730EF5-FD40-4D36-8A33-7B0D269C1A88}</Project>
+      <Project>{51FA6023-D05A-47A9-A5C0-99281C79EA4C}</Project>
       <Name>FIAPMinhasReceitas.Dados</Name>
     </ProjectReference>
     <ProjectReference Include="..\FIAPMinhasReceitas.Models\FIAPMinhasReceitas.Models.csproj">

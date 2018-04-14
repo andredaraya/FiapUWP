@@ -1,13 +1,16 @@
 ﻿using FIAPMinhasReceitas.Models;
 using FIAPMinhasReceitas.Models.Abstracts;
 using FIAPMinhasReceitas.UWP.Extensions;
+using FIAPMinhasReceitas.UWP.Pages;
 using FIAPMinhasReceitas.UWP.Repository;
 using FIAPMinhasReceitas.UWP.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
 using Windows.ApplicationModel.DataTransfer;
+using Windows.UI.Xaml.Controls;
 
 namespace FIAPMinhasReceitas.UWP.ViewModels
 {
