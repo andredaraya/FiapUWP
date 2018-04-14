@@ -99,6 +99,7 @@
     <Compile Include="Converters\DecimalToStringPrecoConverter.cs" />
     <Compile Include="Converters\NullToBooleanConverter.cs" />
     <Compile Include="Converters\NullToVisibilityConverter.cs" />
+    <Compile Include="Converters\RadioButtonToNullableIntConverter.cs" />
     <Compile Include="Converters\TypeToObjectConverter.cs" />
     <Compile Include="Extensions\EnumExtensions.cs" />
     <Compile Include="MainPage.xaml.cs">
@@ -123,6 +124,7 @@
     <Compile Include="Repository\Repository.cs" />
     <Compile Include="Services\NavigationService.cs" />
     <Compile Include="Services\StorageService.cs" />
+    <Compile Include="ViewModels\ConfiguracoesViewModel.cs" />
     <Compile Include="ViewModels\EditarReceitaViewModel.cs" />
     <Compile Include="ViewModels\ReceitasViewModel.cs" />
   </ItemGroup>

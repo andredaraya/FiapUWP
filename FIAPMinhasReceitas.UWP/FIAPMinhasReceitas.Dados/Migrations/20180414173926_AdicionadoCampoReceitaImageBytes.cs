@@ -9,7 +9,7 @@ namespace FIAPMinhasReceitas.Dados.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.AddColumn<byte[]>(
-                name: "ImageBytes",
+                name: "ImagemBytes",
                 table: "Receitas",
                 nullable: true);
         }
@@ -17,7 +17,7 @@ namespace FIAPMinhasReceitas.Dados.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropColumn(
-                name: "ImageBytes",
+                name: "ImagemBytes",
                 table: "Receitas");
         }
     }
