@@ -1,16 +1,13 @@
 ﻿using FIAPMinhasReceitas.Models;
 using FIAPMinhasReceitas.Models.Abstracts;
 using FIAPMinhasReceitas.UWP.Extensions;
-using FIAPMinhasReceitas.UWP.Pages;
 using FIAPMinhasReceitas.UWP.Repository;
 using FIAPMinhasReceitas.UWP.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 using Windows.ApplicationModel.DataTransfer;
-using Windows.UI.Xaml.Controls;
 
 namespace FIAPMinhasReceitas.UWP.ViewModels
 {
@@ -21,7 +18,7 @@ namespace FIAPMinhasReceitas.UWP.ViewModels
             DataTransferManager.GetForCurrentView().DataRequested += EditarReceitaViewModel_DataRequested;
         }
 
-        private MockReceitaRepository ReceitaRepository { get; set; } = MockReceitaRepository.Instance;
+        private EFReceitaRepository ReceitaRepository { get; set; } = EFReceitaRepository.Instance;
 
         private Receita _receita;
 
@@ -67,6 +64,21 @@ namespace FIAPMinhasReceitas.UWP.ViewModels
         public void CompartilharReceita()
         {
             DataTransferManager.ShowShareUI();
+        }
+
+        public async void SalvarReceita()
+        {
+            if (ReceitaRepository.Items.Any(r => r.Id == Receita.Id))
+            {
+                await ReceitaRepository.AtualizarAsync(Receita);
+            }
+            else
+            {
+                if (string.IsNullOrWhiteSpace(Receita.Titulo) && string.IsNullOrWhiteSpace(Receita.Instrucoes))
+                    return;
+
+                await ReceitaRepository.CriarAsync(Receita);
+            }
         }
     }
 }

@@ -15,7 +15,7 @@ namespace FIAPMinhasReceitas.UWP.ViewModels
 {
     public class ReceitasViewModel : NotifyableClass
     {
-        private MockReceitaRepository ReceitaRepository { get; set; } = MockReceitaRepository.Instance;
+        private EFReceitaRepository ReceitaRepository { get; set; } = EFReceitaRepository.Instance;
 
         public ObservableCollection<Receita> Receitas => ReceitaRepository.Items;
 

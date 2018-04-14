@@ -115,7 +115,7 @@
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repository\Base\IRepository.cs" />
-    <Compile Include="Repository\MockReceitaRepository.cs" />
+    <Compile Include="Repository\EFReceitaRepository.cs" />
     <Compile Include="Repository\Repository.cs" />
     <Compile Include="Services\NavigationService.cs" />
     <Compile Include="ViewModels\EditarReceitaViewModel.cs" />
@@ -164,11 +164,18 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore">
+      <Version>2.0.2</Version>
+    </PackageReference>
     <PackageReference Include="Microsoft.NETCore.UniversalWindowsPlatform">
       <Version>6.0.8</Version>
     </PackageReference>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\FIAPMinhasReceitas.Dados\FIAPMinhasReceitas.Dados.csproj">
+      <Project>{21730EF5-FD40-4D36-8A33-7B0D269C1A88}</Project>
+      <Name>FIAPMinhasReceitas.Dados</Name>
+    </ProjectReference>
     <ProjectReference Include="..\FIAPMinhasReceitas.Models\FIAPMinhasReceitas.Models.csproj">
       <Project>{d98fd2f5-0bde-446a-a97b-565440697f06}</Project>
       <Name>FIAPMinhasReceitas.Models</Name>

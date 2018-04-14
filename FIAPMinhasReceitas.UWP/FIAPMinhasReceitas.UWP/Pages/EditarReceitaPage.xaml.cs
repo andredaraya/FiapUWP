@@ -45,5 +45,11 @@ namespace FIAPMinhasReceitas.UWP.Pages
 
             ViewModel.CarregarReceita((Guid)parameter);
         }
+
+        protected override void OnNavigatedFrom(NavigationEventArgs e)
+        {
+            if (!ViewModel.RegistroExcluido)
+                ViewModel.SalvarReceita();
+        }
     }
 }

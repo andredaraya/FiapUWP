@@ -1,4 +1,6 @@
-﻿using System;
+﻿using FIAPMinhasReceitas.Dados;
+using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -30,6 +32,11 @@ namespace FIAPMinhasReceitas.UWP
         {
             this.InitializeComponent();
             this.Suspending += OnSuspending;
+
+            using (var db = new ReceitaDbContext())
+            {
+                db.Database.Migrate();
+            }
         }
 
         /// <summary>
