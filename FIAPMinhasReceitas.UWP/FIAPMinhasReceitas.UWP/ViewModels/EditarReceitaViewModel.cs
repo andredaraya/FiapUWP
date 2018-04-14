@@ -83,5 +83,17 @@ namespace FIAPMinhasReceitas.UWP.ViewModels
                 await ReceitaRepository.CriarAsync(Receita);
             }
         }
+
+        public async void CarregarImagem()
+        {
+            var imageBytes = await StorageService.CarregarImagem();
+
+            Receita.ImagemBytes = imageBytes ?? Receita.ImagemBytes;
+        }
+
+        public void ExcluirImagem()
+        {
+            Receita.ImagemBytes = null;
+        }
     }
 }

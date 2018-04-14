@@ -95,7 +95,10 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Converters\ByteArrayToImageSourceConverter.cs" />
     <Compile Include="Converters\DecimalToStringPrecoConverter.cs" />
+    <Compile Include="Converters\NullToBooleanConverter.cs" />
+    <Compile Include="Converters\NullToVisibilityConverter.cs" />
     <Compile Include="Converters\TypeToObjectConverter.cs" />
     <Compile Include="Extensions\EnumExtensions.cs" />
     <Compile Include="MainPage.xaml.cs">
@@ -119,6 +122,7 @@
     <Compile Include="Repository\MockReceitaRepository.cs" />
     <Compile Include="Repository\Repository.cs" />
     <Compile Include="Services\NavigationService.cs" />
+    <Compile Include="Services\StorageService.cs" />
     <Compile Include="ViewModels\EditarReceitaViewModel.cs" />
     <Compile Include="ViewModels\ReceitasViewModel.cs" />
   </ItemGroup>

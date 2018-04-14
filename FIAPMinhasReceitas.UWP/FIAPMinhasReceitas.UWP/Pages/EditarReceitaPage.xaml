@@ -11,6 +11,9 @@
 
     <Page.Resources>
         <converters:TypeToObjectConverter x:Key="TypeToObject"/>
+        <converters:ByteArrayToImageSourceConverter x:Key="ByteArrayToImageSource"/>
+        <converters:NullToBooleanConverter x:Key="NullToBoolean" />
+        <converters:NullToVisibilityConverter x:Key="NullToVisibility" />
     </Page.Resources>
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
@@ -33,6 +36,20 @@
                     </DataTemplate>
                 </ComboBox>
                 <TextBox Header="Preço" Text="{x:Bind ViewModel.Receita.Preco, Mode=TwoWay, Converter={StaticResource TypeToObject}}" Margin="0,12"/>
+
+                <StackPanel Margin="0,12">
+                    <Image Height="200" Source="{x:Bind ViewModel.Receita.ImagemBytes, Mode=OneWay, Converter={StaticResource ByteArrayToImageSource}}"
+                        Visibility="{x:Bind ViewModel.Receita.ImagemBytes, Mode=OneWay, Converter={StaticResource NullToVisibility}}" Margin="4"/>
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                        <Button Click="{x:Bind ViewModel.CarregarImagem}" Margin="100,0">
+                            <SymbolIcon Symbol="BrowsePhotos"/>
+                        </Button>
+                        <Button Click="{x:Bind ViewModel.ExcluirImagem}"
+                        IsEnabled="{x:Bind ViewModel.Receita.ImagemBytes, Mode=OneWay, Converter={StaticResource NullToBoolean}}">
+                            <SymbolIcon Symbol="Delete"/>
+                        </Button>
+                    </StackPanel>
+                </StackPanel>
             </StackPanel>
         </ScrollViewer>
         <CommandBar Grid.Row="1" Background="Transparent">

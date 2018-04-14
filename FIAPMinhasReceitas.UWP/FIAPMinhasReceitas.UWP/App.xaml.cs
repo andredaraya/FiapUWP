@@ -35,7 +35,9 @@ namespace FIAPMinhasReceitas.UWP
 
             using (var db = new ReceitaDbContext())
             {
-                db.Database.Migrate();
+                db.Database.EnsureDeleted();
+                db.Database.EnsureCreated();
+                //db.Database.Migrate();
             }
         }
 

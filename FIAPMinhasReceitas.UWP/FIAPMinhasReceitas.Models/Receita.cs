@@ -53,5 +53,14 @@ namespace FIAPMinhasReceitas.Models
             get { return _preco; }
             set { Set(ref _preco, value); }
         }
+
+        private byte[] _imagemBytes;
+
+        public byte[] ImagemBytes
+        {
+            get { return _imagemBytes; }
+            set { Set(ref _imagemBytes, value); }
+        }
+
     }
 }
