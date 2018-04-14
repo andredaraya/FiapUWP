@@ -1,4 +1,5 @@
 ﻿using FIAPMinhasReceitas.Models;
+using FIAPMinhasReceitas.UWP.ViewModels;
 using System.Collections.Generic;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
@@ -12,6 +13,8 @@ namespace FIAPMinhasReceitas.UWP.Pages
     /// </summary>
     public sealed partial class ReceitasPage : Page
     {
+        public ReceitasViewModel ViewModel { get; } = new ReceitasViewModel();
+
         public ReceitasPage()
         {
             this.InitializeComponent();
@@ -20,36 +23,7 @@ namespace FIAPMinhasReceitas.UWP.Pages
 
         private void ReceitasPage_Loaded(object sender, RoutedEventArgs e)
         {
-            List<Receita> receitas = CarregarReceitasMock();
-
-            lstReceitas.ItemsSource = receitas;
+            ViewModel.CarregarReceitasMock();
         }
-
-        private static List<Receita> CarregarReceitasMock()
-        {
-            List<Receita> receitas = new List<Receita>();
-
-            receitas.AddRange(
-                new Receita[]
-                {
-            new Receita
-            {
-                Categoria = Categoria.Bebida,
-                Instrucoes = "",
-                Titulo = "Limonada",
-                MinutosPreparo = 10
-            },
-            new Receita
-            {
-                Categoria = Categoria.Doce,
-                Instrucoes = "",
-                Titulo = "Churros",
-                MinutosPreparo = 30
-            }
-                }
-            );
-            return receitas;
-        }
-
     }
 }
