@@ -124,6 +124,9 @@
     <Compile Include="Repository\Repository.cs" />
     <Compile Include="Services\NavigationService.cs" />
     <Compile Include="Services\StorageService.cs" />
+    <Compile Include="UserControls\ReceitasListUserControl.xaml.cs">
+      <DependentUpon>ReceitasListUserControl.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ViewModels\ConfiguracoesViewModel.cs" />
     <Compile Include="ViewModels\EditarReceitaViewModel.cs" />
     <Compile Include="ViewModels\ReceitasViewModel.cs" />
@@ -166,6 +169,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Pages\TimerPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControls\ReceitasListUserControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

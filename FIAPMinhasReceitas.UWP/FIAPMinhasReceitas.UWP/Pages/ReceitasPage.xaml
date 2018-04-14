@@ -6,6 +6,7 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:models="using:FIAPMinhasReceitas.Models"
+    xmlns:controls="using:FIAPMinhasReceitas.UWP.UserControls"
     xmlns:cvt="using:FIAPMinhasReceitas.UWP.Converters"
     mc:Ignorable="d">
 
@@ -44,18 +45,7 @@
                 </ListView.HeaderTemplate>
                 <ListView.ItemTemplate>
                     <DataTemplate x:DataType="models:Receita">
-                        <Grid Margin="12">
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="2*"/>
-                                <ColumnDefinition Width="*"/>
-                                <ColumnDefinition Width="*"/>
-                                <ColumnDefinition Width="*"/>
-                            </Grid.ColumnDefinitions>
-                            <TextBlock Text="{x:Bind Titulo, Mode=OneWay}" />
-                            <TextBlock Text="{x:Bind Categoria, Mode=OneWay}" Grid.Column="1" />
-                            <TextBlock Text="{x:Bind Preco, Mode=OneWay, Converter={StaticResource DecimalToStringPreco}}" Grid.Column="2" />
-                            <TextBlock Text="{x:Bind MinutosPreparo, Mode=OneWay}" Grid.Column="3" HorizontalAlignment="Right" />
-                        </Grid>
+                        <controls:ReceitasListUserControl Receita= "{x:Bind}"/>
                     </DataTemplate>
                 </ListView.ItemTemplate>
                 <ListView.ItemContainerStyle>
